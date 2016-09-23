@@ -6,12 +6,12 @@ function App(props) {
   return (
     <div className="app">
       <h1>{props.store}</h1>
-      <Button
-        text={'Increment'}
-        action={props.increment} />
-      <Button
-        text={'Decrement'}
-        action={props.decrement} />
+      <Button action={props.increment}>
+        <p>Increment</p>
+      </Button>
+      <Button action={props.decrement}>
+        <p>Decrement</p>
+      </Button>
     </div>
   )
 }
