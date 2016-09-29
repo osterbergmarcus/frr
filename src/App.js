@@ -13,16 +13,21 @@ function App(props) {
       <Button action={() => props.dispatch({ type: 'DECREMENT' })}>
         <p>Decrement</p>
       </Button>
+      <div>
+        <input type="checkbox" onChange={() => props.dispatch({ type: 'DELAY' })} />
+          {props.delay ? 'Delay On' : 'Delay Off'}
+      </div>
     </div>
   )
 }
 
 React.propTypes = {
-  decrement: React.PropTypes.function,
-  increment: React.PropTypes.function,
   count: React.PropTypes.number,
+  decrement: React.PropTypes.function,
+  delay: React.PropTypes.boolean,
+  increment: React.PropTypes.function,
 }
 
 export default connect(
-  ({ count }) => ({ count })
+  ({ count, delay }) => ({ count, delay })
 )(App)

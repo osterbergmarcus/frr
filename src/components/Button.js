@@ -8,7 +8,7 @@ function Button(props) {
 
 React.propTypes = {
     action: React.PropTypes.function,
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
 }
 
 export default Button
