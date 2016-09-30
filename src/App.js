@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import Button from './components/Button'
+import Delay from './components/Delay'
 import { connect } from 'react-redux'
 
 function App(props) {
@@ -13,10 +14,9 @@ function App(props) {
       <Button action={() => props.dispatch({ type: 'DECREMENT' })}>
         <p>Decrement</p>
       </Button>
-      <div>
-        <input type="checkbox" onChange={() => props.dispatch({ type: 'DELAY' })} />
-          {props.delay ? 'Delay On' : 'Delay Off'}
-      </div>
+        <Delay action={(payload) => props.dispatch({ type: 'DELAY', payload })}>
+          {props.delay}
+        </Delay>
     </div>
   )
 }
@@ -24,7 +24,7 @@ function App(props) {
 React.propTypes = {
   count: React.PropTypes.number,
   decrement: React.PropTypes.function,
-  delay: React.PropTypes.boolean,
+  delay: React.PropTypes.number,
   increment: React.PropTypes.function,
 }
 
