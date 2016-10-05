@@ -1,25 +1,27 @@
 import 'rxjs'
 
-export const incrementCounter = (action$) => {
+export const increaseCounter = (action$) => {
     return action$
-        .filter(action => action.type === 'INCREMENT')
-        .map(() => ({ type: 'INCREMENT' }))
+        .ofType('INCREMENT')
+        .mapTo({ type: 'INCREMENT' })
         .debounceTime(1000)
+        .do(e => console.log(e))
 }
 
-export const decrementCounter = (action$) => {
+export const decreaseCounter = (action$) => {
     return action$
-        .filter(action => action.type === 'DECREMENT')
-        .map(() => ({ type: 'DECREMENT' }))
+        .ofType('DECREMENT')
+        .mapTo({ type: 'DECREMENT' })
         .debounceTime(1000)
+        .do(e => console.log(e))
 }
 
 export const delayCounter = (action$) => {
     return action$
-            .filter(action => action.type === 'DELAY')
-            .map((action) => ({ type: 'DELAY', payload: action.payload }))
-            .do(e => console.log(e))
-            .take(1)
+        .ofType('DELAY')
+        .mapTo({ type: 'DELAY' })
+        .do(e => console.log(e))
+        .takeLast()
 }
 
 export const counter = (state = { count: 0, delay: 0, }, action) => {
